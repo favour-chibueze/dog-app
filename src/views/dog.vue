@@ -13,7 +13,7 @@
             <div class="mt-2 text-center" v-if="!filteredDogs.length">
                 No record found
             </div>
-            <div class="mt-3" v-if="loading ===  false">
+            <div class="mt-3" v-if="loading ===  false && filteredDogs.length">
                 <b-pagination
                     v-model="currentPage" 
                     @change="onPageChanged" 
@@ -50,13 +50,12 @@ export default {
     },
     created() {
         this.$eventHub.$on("_search" , (search) => {
-            console.log(search);
            this.searchStr = search
         })
     },
     computed: {
       rows() {
-        return this.dogs.length
+        return this.dogsList.length
       },
       filteredDogs() {
         return this.dogsList.filter(dog =>dog.name.toLowerCase().includes(this.searchStr.toLowerCase()))
@@ -96,7 +95,6 @@ export default {
             return this.dogsList.slice(
                 (this.currentPage + 1) * this.perPage,
                 this.currentPage * this.perPage,
-                console.log(this.perPage)
             );
            
               

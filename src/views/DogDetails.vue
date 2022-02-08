@@ -53,7 +53,6 @@ export default {
         .get(`https://dog.ceo/api/breed/${this.$route.params.name}/list`)
         .then(response => {
             this.dogDetails = response.data.message
-            console.log(response);
         })
         .catch(() => {
             console.log('Unable to load dogs');
