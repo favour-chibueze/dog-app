@@ -1,13 +1,17 @@
 <template>
     <div>
         <b-container class="mt-4">
-            <b-img-lazy
-                :src="this.$route.params.url" 
-                blank-src="https://upload.wikimedia.org/wikipedia/commons/5/54/Ajux_loader.gif"
-                class="card-img-top"
-                width="200" 
-            >
-            </b-img-lazy>
+            <div class="card mt-4">
+                    <b-img-lazy
+                        :src="this.$route.params.url"  
+                        width="200" 
+                        height="250"
+                        >
+                    </b-img-lazy>
+                    <div class="card-body">
+                        <h5 class="card-title text-capitalize text-center">{{this.$route.params.name}}</h5>
+                    </div>
+             </div>
         </b-container>
     </div>
 </template>
