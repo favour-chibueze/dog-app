@@ -90,7 +90,7 @@ export default {
                      this.$store.commit('setDogList', responseData);
                 }
             });
-            return this.dogBreed.slice(
+            return this.dogsList.slice(
                 (this.currentPage + 1) * this.perPage,
                 this.currentPage * this.perPage,
                 console.log(this.perPage)
