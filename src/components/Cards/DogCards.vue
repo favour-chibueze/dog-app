@@ -1,5 +1,5 @@
 <template>
-    <div class="card-container"> {{dogs.length}} 
+    <div class="card-container">
         <b-row class="mt-4 card-container__row" cols="1" cols-sm="1" cols-md="2" cols-lg="3" >
             <div class="card mt-4" v-for="(dog, index) in dogs" :key="index">
                 <b-col>
@@ -7,7 +7,6 @@
                         <b-img-lazy
                                 :src="dog.imgUrl" 
                                 v-bind="mainProps" 
-                                blank-src="https://upload.wikimedia.org/wikipedia/commons/5/54/Ajux_loader.gif"
                                 class="card-img-top"
                                 width="200" 
                                 height="250"
@@ -42,7 +41,7 @@ export default {
             mainProps: {
             center: true,
             blank: true,
-            // blankColor: '#bbb',
+            blankColor: '#bbb',
             }
         }
     },

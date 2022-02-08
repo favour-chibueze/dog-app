@@ -7,12 +7,18 @@
             </div>
             
             <DogCards 
-                :dogs="dogsList" 
+                :dogs="filteredDogs" 
                 v-else
             />
-            <div class="mt-2">Value: {{ search }}</div>
-            <b-pagination v-model="currentPage" @change="onPageChanged" :total-rows="rows"
-      :per-page="perPage" align="center"></b-pagination>
+            <div class="mt-2" v-if="loading == true"></div>
+            <b-pagination 
+                v-else
+                v-model="currentPage" 
+                @change="onPageChanged" 
+                :total-rows="rows"
+                :per-page="perPage" 
+                align="center">
+            </b-pagination>
         </b-container>
     </div>
 </template>
@@ -35,13 +41,23 @@ export default {
             loading: true,
             dogs: [],
             dogsList: [],
-            images: []
+            images: [],
+            searchStr: ""
         }
+    },
+    created() {
+        this.$eventHub.$on("_search" , (search) => {
+            console.log(search);
+           this.searchStr = search
+        })
     },
     computed: {
       rows() {
         return this.dogs.length
-      }
+      },
+      filteredDogs() {
+        return this.dogsList.filter(dog =>dog.name.toLowerCase().includes(this.searchStr.toLowerCase()))
+        }
     },
     mounted () {
         this.getDogBreeds()
@@ -50,15 +66,6 @@ export default {
     //     console.log(dogBreed)
     },
      methods: {
-        searchDogs() {
-            this.loading = true;
-            this.getDogBreeds()
-                .then((response) => {
-                this.images = response.data.message;
-                this.loading = false;
-                })
-            console.log("Searching for: ", this.images)
-        },
         onPageChanged(page) {
             this.getDogBreeds(this.perPage, page - 1);
         },
@@ -67,6 +74,7 @@ export default {
         this.axios
         .get(`https://dog.ceo/api/breeds/list/all`)
         .then(response => {
+            var responseData = response.data.message
             this.dogs = Object.keys(response.data.message)
             this.dogBreed = this.dogs.slice(0, 10);
             this.dogBreed.forEach(async (dogBreed) =>  {
@@ -81,6 +89,7 @@ export default {
                             }
                         }
                     }))
+                     this.$store.commit('setDogList', responseData);
                 }
             });
             return this.dogBreed.slice(
@@ -88,6 +97,8 @@ export default {
                 this.currentPage * this.perPage,
                 console.log(this.perPage)
             );
+           
+              
         })
         .catch(() => {
             console.log('Unable to load dogs');
