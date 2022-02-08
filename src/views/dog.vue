@@ -10,7 +10,7 @@
                 :dogs="filteredDogs" 
                 v-else
             />
-            <div v-if="loading ===  false">
+            <div class="mt-3" v-if="loading ===  false">
                 <b-pagination
                     v-model="currentPage" 
                     @change="onPageChanged" 
