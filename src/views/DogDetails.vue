@@ -7,7 +7,8 @@
              </div>
             <div class="text-center mt-4">
                     <b-img-lazy
-                        :src="this.$route.params.url"  
+                        :src="this.$route.params.url"
+                        alt="dog"  
                         width="500"
                         class="details-img"
                         >

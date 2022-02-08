@@ -6,10 +6,9 @@
                     <router-link class="text-dark text-decoration-none" :to="{ name: 'dogDetails', params: {name: dog.name, url: dog.imgUrl}}">  
                         <b-img-lazy
                                 :src="dog.imgUrl" 
+                                alt="dog"
                                 v-bind="mainProps" 
                                 class="card-img-top"
-                                width="200" 
-                                height="250"
                                 :per-page="perPage"
                                 :current-page="currentPage"
                             >
@@ -37,11 +36,12 @@ export default {
             data: {},
             perPage: 3,
             currentPage: 1,
-            // images: [],
             mainProps: {
             center: true,
             blank: true,
             blankColor: '#bbb',
+            width: "200",
+            height: "250"
             }
         }
     },
