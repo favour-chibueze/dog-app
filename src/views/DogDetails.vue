@@ -13,7 +13,6 @@
                     </b-img-lazy>
                     <div class="details-container_body">
                         <h5 class="card-title text-capitalize mt-3 text-center">Breed: {{this.$route.params.name}}</h5>
-                        <!-- <p>This dog does not have a sub-breed</p> -->
                         <div v-if="dogDetails == '' ">
                             <p>This dog has no sub-breed</p>
                         </div>

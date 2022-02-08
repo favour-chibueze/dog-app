@@ -16,17 +16,19 @@ body {
 
 .card-container {
     .card {
-        // flex: 0 0 30%;
-        //  margin: auto;
         border: none;
-            .card-body {
-            box-shadow: 0 4px 6px 0px #bababa;
-        }
     }
-     .card-container__row {
-        // margin: auto;
-     }
 }
+.spinner-container {
+    min-height: 100vh;
+    place-content: center;
+   align-items: center;
+    .spinner-border {
+        width: 100px;
+        height: 100px;
+    }
+}
+
 
 
 @media (max-width: 768px) { 

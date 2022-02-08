@@ -2,23 +2,23 @@
     <div>
         <b-container class="mt-4">
             <MasterLayout/>
-            <div class="mt-4 d-flex justify-content-center" v-if="loading">
-                <b-spinner type="grow" label="Loading..."></b-spinner>
+            <div class="spinner-container mt-4 d-flex justify-content-center" v-if="loading">
+                <b-spinner label="Loading..."></b-spinner>
             </div>
             
             <DogCards 
                 :dogs="filteredDogs" 
                 v-else
             />
-            <div class="mt-2" v-if="loading == true"></div>
-            <b-pagination 
-                v-else
-                v-model="currentPage" 
-                @change="onPageChanged" 
-                :total-rows="rows"
-                :per-page="perPage" 
-                align="center">
-            </b-pagination>
+            <div v-if="loading ===  false">
+                <b-pagination
+                    v-model="currentPage" 
+                    @change="onPageChanged" 
+                    :total-rows="rows"
+                    :per-page="perPage" 
+                    align="center">
+                </b-pagination>
+            </div>
         </b-container>
     </div>
 </template>
@@ -62,8 +62,6 @@ export default {
     mounted () {
         this.getDogBreeds()
         this.getBreedsImages()
-    //    dogBreed = this.$route.query.dogBreed
-    //     console.log(dogBreed)
     },
      methods: {
         onPageChanged(page) {
