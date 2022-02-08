@@ -4,8 +4,8 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from '../views/Home.vue';
-import Profile from '../views/Profile.vue'
-import About from '../views/About.vue'
+import DogDetails from '../views/DogDetails.vue'
+// import About from '../views/About.vue'
 
 const routes = [
 	{
@@ -14,15 +14,15 @@ const routes = [
 		component: Home,
 	},
 	{
-        path: '/profile',
-        name: 'profile',
-        component: Profile,
+        path: '/dog-details/:name',
+        name: 'dogDetails',
+        component: DogDetails,
       },
-	{
-		path: '/about',
-		name: 'about',
-		component: About,
-	}
+	// {
+	// 	path: '/about',
+	// 	name: 'about',
+	// 	component: About,
+	// }
 ];
 
 const router = new VueRouter({
