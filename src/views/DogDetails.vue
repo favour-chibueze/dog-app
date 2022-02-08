@@ -9,6 +9,7 @@
                     <b-img-lazy
                         :src="this.$route.params.url"  
                         width="500"
+                        class="details-img"
                         >
                     </b-img-lazy>
                     <div class="details-container_body">

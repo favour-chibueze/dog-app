@@ -17,6 +17,9 @@ body {
 .card-container {
     .card {
         border: none;
+        .card-body {
+            box-shadow: 0 4px 6px 0px #bababa;
+        }
     }
 }
 .spinner-container {
@@ -32,9 +35,7 @@ body {
 
 
 @media (max-width: 768px) { 
-    .card-container {
-        .card-container__row {
-            margin: auto;
-        }
+    .details-img {
+        width: 100%;
     }
  }
