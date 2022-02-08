@@ -1,7 +1,7 @@
 <template>
     <div class="card-container">
         <b-row class="mt-4" cols="1" cols-sm="1" cols-md="2" cols-lg="3" >
-            <div class="card mt-4" v-for="(dog, index) in dogs" :key="index">
+            <div class="card mt-4" v-for="(dog, index) in dogs" :key="index" >
                 <b-col>
                     <router-link class="text-dark text-decoration-none" :to="{ name: 'dogDetails', params: {name: dog.name, url: dog.imgUrl}}">  
                         <b-img-lazy

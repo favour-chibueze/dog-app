@@ -10,6 +10,9 @@
                 :dogs="filteredDogs" 
                 v-else
             />
+            <div class="mt-2 text-center" v-if="!filteredDogs.length">
+                No record found
+            </div>
             <div class="mt-3" v-if="loading ===  false">
                 <b-pagination
                     v-model="currentPage" 
